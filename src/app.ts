@@ -1,3 +1,4 @@
+import path from 'path';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -21,6 +22,9 @@ class App {
     this.app = express();
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;
+
+    this.app.set('views', path.join(__dirname, 'public/views'));
+    this.app.set('view engine', 'ejs');
 
     this.initializeMiddlewares();
     this.initializeRoutes(routes);
