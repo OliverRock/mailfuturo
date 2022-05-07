@@ -13,6 +13,7 @@ class EmailRoute implements Routes {
 
   private initializeRoutes() {
     this.router.post(`${this.path}`, this.emailController.index);
+    this.router.get(`${this.path}/verify/:id`, this.emailController.verifyEmail);
   }
 }
 
