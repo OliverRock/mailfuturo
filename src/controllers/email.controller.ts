@@ -6,11 +6,12 @@ class EmailController {
   public index = (req: Request, res: Response, next: NextFunction): void => {
     try {
       res.json({ requestBody: req.body });
-      /*DB.Messages.create({
+      DB.Messages.create({
         email: req.body.email,
         message: req.body.messageContents,
-      });*/
-      emailClient.sendEmail(req.body.email, 'subject', req.body.messageContents);
+        isValidated: false,
+      });
+      // emailClient.sendEmail(req.body.email, 'subject', req.body.messageContents);
     } catch (error) {
       next(error);
     }

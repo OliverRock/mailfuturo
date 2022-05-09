@@ -13,3 +13,10 @@ To run in produciton mode
 ```
 npm run start
 ```
+
+
+## Postgres
+
+Docs I used:
+- [sqlshack](https://www.sqlshack.com/setting-up-a-postgresql-database-on-mac/)
+- [Cheatsheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
