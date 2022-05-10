@@ -6,5 +6,6 @@ CREATE TABLE message(
     message_text varchar(128) NOT NULL,
     delivery_date DATE NOT NULL,
     created_timestamp timestamp NOT NULL default current_timestamp,
-    isValidated bool NOT NULL
+    isValidated bool NOT NULL,
+    delivered bool NOT NULL
 );

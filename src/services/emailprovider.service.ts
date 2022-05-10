@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import { EMAIL_ADDRESS, EMAIL_PASSWORD } from '@config';
+import { logger } from '@/utils/logger';
 
 class EmailClient {
   private static instance: EmailClient;
@@ -27,17 +28,20 @@ class EmailClient {
       from: EMAIL_ADDRESS,
       to: 'oliver.rock@proton.me',
       subject: 'Sending Email using Node.js',
-      html: '<h1>verify your email</h1><p>Click here to verify' + address + ' email' + messageId + '</p>',
+      html:
+        '<h1>Verify your email</h1><p>Hello,\nThank you for using mailFuturo. You will receive your email on ... but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify' +
+        messageId +
+        '">here to confirm you email address</a></p>',
     };
-    this.sendEmail(mailOptions);
+    this.sendEmail(mailOptions, 'Verification');
   }
 
-  private async sendEmail(mailOptions) {
+  private async sendEmail(mailOptions, emailType: 'Verification') {
     this.transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
-        console.log(error);
+        logger.log(error);
       } else {
-        console.log('Email sent: ' + info.response);
+        logger.info(`${emailType} email sent: ${info.response}`);
       }
     });
   }

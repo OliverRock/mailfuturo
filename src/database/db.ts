@@ -1,4 +1,5 @@
 import { Message } from '@/interfaces/message.interface';
+import { logger } from '@/utils/logger';
 import { Pool } from 'pg';
 
 class DB {
@@ -23,12 +24,17 @@ class DB {
   }
 
   public async addNewMessage(emailAddress: string, delivery_date: Date, messageContent: string) {
-    return this.pool.query('INSERT INTO message (email_address, message_text, delivery_date, isValidated) VALUES ($1, $2, $3, $4) RETURNING *', [
-      emailAddress,
-      messageContent,
-      delivery_date,
-      false,
-    ]);
+    return this.pool
+      .query('INSERT INTO message (email_address, message_text, delivery_date, isValidated) VALUES ($1, $2, $3, $4) RETURNING *', [
+        emailAddress,
+        messageContent,
+        delivery_date,
+        false,
+      ])
+      .then(res => {
+        logger.info(`New message saved to DB: ${emailAddress}`);
+        return res;
+      });
   }
 
   public async validateEmailAddress(messageId: number) {
