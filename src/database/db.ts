@@ -1,36 +1,30 @@
-import Sequelize from 'sequelize';
-import { NODE_ENV, DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE } from '@config';
-import { logger } from '@utils/logger';
-import MessageModel from '@/models/message.model';
+import { Message } from '@/interfaces/message.interface';
+import { Pool } from 'pg';
 
-const sequelize = new Sequelize.Sequelize(DB_DATABASE, DB_USER, DB_PASSWORD, {
-  dialect: 'postgres',
-  host: DB_HOST,
-  port: +DB_PORT,
-  timezone: '+01:00',
-  define: {
-    charset: 'utf8mb4',
-    collate: 'utf8mb4_general_ci',
-    underscored: true,
-    freezeTableName: true,
-  },
-  pool: {
-    min: 0,
-    max: 5,
-  },
-  logQueryParameters: NODE_ENV === 'development',
-  logging: (query, time) => {
-    logger.info(time + 'ms' + ' ' + query);
-  },
-  benchmark: true,
-});
+class DB {
+  private static instance: DB;
+  private pool: Pool;
 
-sequelize.authenticate();
+  private constructor() {
+    this.pool = new Pool({
+      user: 'oliverrock',
+      password: 'MasterQueen69',
+      host: '127.0.0.1',
+      port: 5432,
+      database: 'mailfuturo',
+    });
+  }
 
-const DB = {
-  Messages: MessageModel(sequelize),
-  sequelize, // connection instance (RAW queries)
-  Sequelize, // library
-};
+  public static getInstance(): DB {
+    if (!DB.instance) {
+      DB.instance = new DB();
+    }
+    return DB.instance;
+  }
+
+  public async addNewMessage(emailAdress: string, messageContent: string) {
+    this.pool.query('INSERT INTO message (email_address, message_text, isValidated) VALUES ($1, $2, $3)', [emailAdress, messageContent, false]);
+  }
+}
 
 export default DB;
