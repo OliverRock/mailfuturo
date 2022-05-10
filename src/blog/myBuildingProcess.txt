@@ -1,0 +1,37 @@
+How I built this website
+
+Initialising the project:
+My goal is to build a website which I can host myself on a linode virtual machine.  I ahve a few other sidequests alongside this main aim. 
+To learn typescript, to use docker, use a database, use a typescript test suit and finally to leanr some design 
+patterns for building a website. I could probabl start from nothing and build something but this would require me to spend a lot of time watching tutorials about technology 
+that I have not be exposed to before. 
+
+
+Step one is to do basic plan of what I want, and what supprised me about this step was that I actually had a clear idea.
+
+Oneliner: As a user I want to be able to send an email which is deliverd in 10 years time.
+
+To aceive this I need:
+
+- A website with a form where the user can enter their email, add a message and choose a delivery date
+- A system to verify an email address
+- A cron job which delivers emails on their due date
+
+Pretty simple. I have built small projects which just sit on github collecting technical dust and this one could be the same.
+
+But I want to add a contraint which will make this much harder. Maintain a standard of excellance for this project.
+
+What does it mean to do it well?
+
+- The UI has to be very good - maybe I should get a designer involved
+- The structure of the code has to be excelent, it must be tested and secure and I need an experianced software engineer to say, 'Nice one Oli!'
+- It needs to be used by real people, that I do not know; those poeple are the best judges of if it is actually excellent. That means I need a plan to get users.
+
+
+Sequalize:
+
+The starter pack recommended using sequalize. I have not found this particularly straight forward to manage my database.
+I hve created a database and have been trying to connect my app to it for a while but sequalize does not want to connect, after too many youtube tutorials
+and reading documentation, I have decided to use a less complex and less powerful tool, the basic postgres node packeage. Alto this is not following the path of excellance it will
+be much fasetr to deploy and debug. note to self, always remember to double check which user is connecting to a database and which database you are using. I wasted a lot of time
+connecting to different databases :(

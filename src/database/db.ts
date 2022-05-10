@@ -22,8 +22,21 @@ class DB {
     return DB.instance;
   }
 
-  public async addNewMessage(emailAdress: string, messageContent: string) {
-    this.pool.query('INSERT INTO message (email_address, message_text, isValidated) VALUES ($1, $2, $3)', [emailAdress, messageContent, false]);
+  public async addNewMessage(emailAddress: string, delivery_date: Date, messageContent: string) {
+    return this.pool.query('INSERT INTO message (email_address, message_text, delivery_date, isValidated) VALUES ($1, $2, $3, $4) RETURNING *', [
+      emailAddress,
+      messageContent,
+      delivery_date,
+      false,
+    ]);
+  }
+
+  public async validateEmailAddress(messageId: number) {
+    this.pool.query('UPDATE message SET isValidated = true WHERE pk = $1', [messageId]);
+  }
+
+  public async getAllMEssagesToDeliverToday(today: string) {
+    return today;
   }
 }
 

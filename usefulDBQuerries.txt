@@ -1,4 +1,0 @@
-CREATE TABLE message(
-    pk SERIAL PRIMARY KEY,
-    address varchar(128)
-);
