@@ -41,8 +41,8 @@ class DB {
     this.pool.query('UPDATE message SET isValidated = true WHERE pk = $1', [messageId]);
   }
 
-  public async getAllMEssagesToDeliverToday(today: string) {
-    return today;
+  public async getAllMEssagesToDeliverToday(today: Date) {
+    return this.pool.query('SELECT * FROM message WHERE delivery_date = $1', [today]);
   }
 }
 

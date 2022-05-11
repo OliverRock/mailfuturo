@@ -3,8 +3,8 @@ import EmailClient from '@/services/emailprovider.service';
 import DB from '@/database/db';
 
 class EmailController {
-  public index = (req: Request, res: Response, next: NextFunction): void => {
-    res.json({ requestBody: req.body });
+  public submit = (req: Request, res: Response, next: NextFunction): void => {
+    res.render('submit');
     DB.getInstance()
       .addNewMessage(req.body.email, new Date(req.body.deliveryDate), req.body.messageContents)
       .then(messageId => {
@@ -20,7 +20,15 @@ class EmailController {
       const emailId = req.params.id;
       DB.getInstance().validateEmailAddress(+req.params.id);
       console.log(emailId);
-      res.send('Thank you for verifying your email.');
+      res.render('confirm');
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public sendAllEmails = (req: Request, res: Response, next: NextFunction): void => {
+    try {
+      DB.getInstance().getAllMEssagesToDeliverToday(new Date());
     } catch (error) {
       next(error);
     }

@@ -29,7 +29,7 @@ class EmailClient {
       to: 'oliver.rock@proton.me',
       subject: 'Sending Email using Node.js',
       html:
-        '<h1>Verify your email</h1><p>Hello,\nThank you for using mailFuturo. You will receive your email on ... but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify' +
+        '<h1>Verify your email</h1><p>Hello,\nThank you for using mailFuturo. You will receive your email on ... but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify/' +
         messageId +
         '">here to confirm you email address</a></p>',
     };
