@@ -1,4 +1,3 @@
-import { Message } from '@/interfaces/message.interface';
 import { logger } from '@/utils/logger';
 import { Pool } from 'pg';
 
