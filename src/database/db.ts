@@ -40,11 +40,20 @@ class DB {
   public async validateEmailAddress(messageId: number) {
     this.pool.query('UPDATE message SET isValidated = true WHERE pk = $1', [messageId]);
   }
-
+  public validateDeliveryOfMessage(messageId: number) {
+    this.pool.query('UPDATE message SET delivered = true WHERE pk = $1', [messageId]);
+  }
+  /**
+   * Method will return a list of all message which should be delivered today
+   * @param today Todays Date
+   * @returns list of msgs
+   */
   public async getAllMessagesToDeliverToday(today: Date) {
-    this.pool.query('SELECT * FROM message WHERE delivery_date = $1 AND isValidated = $2 AND delivered = $3', [today, true, false]).then(res => {
-      console.log(res);
-    });
+    return this.pool
+      .query('SELECT * FROM message WHERE delivery_date = $1 AND isValidated = $2 AND delivered = $3', [today, true, false])
+      .then(res => {
+        return res.rows;
+      });
   }
 }
 

@@ -30,12 +30,28 @@ class EmailController {
   public sendAllEmails = (req: Request, res: Response, next: NextFunction): void => {
     logger.info('Received POST to sendAllEmails');
     try {
-      DB.getInstance().getAllMessagesToDeliverToday(new Date());
+      DB.getInstance()
+        .getAllMessagesToDeliverToday(new Date())
+        .then(listOfMsgs => {
+          listOfMsgs.forEach(message => {
+            this.deliverASingleMessage(message);
+          });
+        });
       res.send('We are sending all emails');
     } catch (error) {
       next(error);
     }
   };
+  private deliverASingleMessage(message) {
+    logger.info('Atempting to deliver message pk: ' + message.pk);
+    EmailClient.getInstance()
+      .deliverFinalMessage(message.email_address, message.message_text, message.created_timestamp)
+      .then(resolve => {
+        if (resolve) {
+          DB.getInstance().validateDeliveryOfMessage(message.pk);
+        }
+      });
+  }
 }
 
 export default EmailController;

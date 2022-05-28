@@ -35,21 +35,37 @@ class EmailClient {
     };
     this.sendEmail(mailOptions, 'Verification');
   }
-  public deliveryFinalMessage(address: string, messageId: string) {
-    return address + messageId;
+  public async deliverFinalMessage(address: string, message: string, dateCreated: Date) {
+    const mailOptions = {
+      from: EMAIL_ADDRESS,
+      to: 'oliver.rock@proton.me',
+      subject: 'A message from the past',
+      html:
+        '<h1>The day has finally come</h1><p>On ' +
+        dateCreated +
+        ' you sent an email to yourself, you  asked for the email to be delivered today. Here is you message:</p>' +
+        '<p>' +
+        message +
+        '</p>',
+    };
+    return this.sendEmail(mailOptions, 'FinalMessageDelivered');
   }
   /**
    * Method is used to send an email
    * @param mailOptions should be a dict with fields: from, to, subj, and msg
    * @param emailType
    */
-  private async sendEmail(mailOptions, emailType: 'Verification') {
-    this.transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        logger.log(error);
-      } else {
-        logger.info(`${emailType} email sent: ${info.response}`);
-      }
+  private async sendEmail(mailOptions, emailType: 'Verification' | 'FinalMessageDelivered') {
+    return new Promise((resolve, reject) => {
+      this.transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          logger.log(error);
+          reject();
+        } else {
+          logger.info(`${emailType} email sent: ${info.response}`);
+          resolve('msg delivered');
+        }
+      });
     });
   }
 }
