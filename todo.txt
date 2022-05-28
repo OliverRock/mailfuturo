@@ -5,3 +5,7 @@ Get message ID from create query
 Create email with verifiaction code
 
 Make sure there is always a date when message is submitted
+
+write docs for setting up database
+
+Hide the database ID

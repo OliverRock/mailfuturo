@@ -35,7 +35,7 @@
                     
                     <div class="col-lg-3 col-sm-6">
                         <label for="arrivalDate">When do you want your message delivered</label>
-                        <select class="form-select" aria-label="Default select example" name="dateSelect">
+                        <select id='timePeriodDropDown' class="form-select" aria-label="Default select example" name="dateSelect">
                             <option value="1">In one year</option>
                             <option value="2">In two years</option>
                             <option selected value="3">In three years</option>
@@ -53,13 +53,7 @@
         </form>
     </div>
 
-    <script type="text/javascript">
-        $(function() {
-            $('#datepicker').datepicker();
-        });
-    </script>
-    <script type="text/javascript">
-        
+    <script type="text/javascript" src="homePage.js">
     </script>
 
 </body>

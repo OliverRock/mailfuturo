@@ -20,3 +20,9 @@ npm run start
 Docs I used:
 - [sqlshack](https://www.sqlshack.com/setting-up-a-postgresql-database-on-mac/)
 - [Cheatsheet](https://www.postgresqltutorial.com/postgresql-cheat-sheet/)
+
+Useful commands:
+- ```\l```: list all databases
+- ```\c```: which databse an i connected to
+- ```\c <db name>```: connect to a certain database
+- ```\dt```: list all tables in the current database
