@@ -4,7 +4,7 @@ import DB from '@/database/db';
 import { logger } from '@/utils/logger';
 
 class EmailController {
-  public submit = (req: Request, res: Response, next: NextFunction): void => {
+  public submit(req: Request, res: Response, next: NextFunction): void {
     res.render('submit');
     DB.getInstance()
       .addNewMessage(req.body.email, new Date(req.body.deliveryDate), req.body.messageContents)
@@ -14,9 +14,9 @@ class EmailController {
       .catch(error => {
         next(error);
       });
-  };
+  }
 
-  public verifyEmail = (req: Request, res: Response, next: NextFunction): void => {
+  public verifyEmail(req: Request, res: Response, next: NextFunction): void {
     try {
       const emailId = req.params.id;
       DB.getInstance().validateEmailAddress(+req.params.id);
@@ -25,9 +25,9 @@ class EmailController {
     } catch (error) {
       next(error);
     }
-  };
+  }
 
-  public sendAllEmails = (req: Request, res: Response, next: NextFunction): void => {
+  public sendAllEmails(req: Request, res: Response, next: NextFunction): void {
     logger.info('Received POST to sendAllEmails');
     try {
       DB.getInstance()
@@ -41,7 +41,7 @@ class EmailController {
     } catch (error) {
       next(error);
     }
-  };
+  }
   private deliverASingleMessage(message) {
     logger.info('Atempting to deliver message pk: ' + message.pk);
     EmailClient.getInstance()
