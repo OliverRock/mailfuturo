@@ -26,8 +26,8 @@ class EmailClient {
   public sendVerificationEmail(address: string, messageId: string) {
     const mailOptions = {
       from: EMAIL_ADDRESS,
-      to: 'oliver.rock@proton.me',
-      subject: 'Sending Email using Node.js',
+      to: address,
+      subject: 'Verify your email',
       html:
         '<h1>Verify your email</h1><p>Hello,\nThank you for using mailFuturo. You will receive your email on ... but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify/' +
         messageId +
@@ -38,7 +38,7 @@ class EmailClient {
   public async deliverFinalMessage(address: string, message: string, dateCreated: Date) {
     const mailOptions = {
       from: EMAIL_ADDRESS,
-      to: 'oliver.rock@proton.me',
+      to: address,
       subject: 'A message from the past',
       html:
         '<h1>The day has finally come</h1><p>On ' +

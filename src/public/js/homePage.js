@@ -4,12 +4,10 @@ let timePeriod = document.getElementById('timePeriodDropDown');
 updateDeliveryDate();
 
 timePeriod.addEventListener('change', () => {
-  console.log('hell');
   updateDeliveryDate();
 });
 
 function updateDeliveryDate() {
-  console.log('hellp');
   var today = new Date();
   var day = today.getDate();
   var mon = today.getMonth() + 1; //January is 0!

@@ -25,7 +25,7 @@ class App {
 
     this.app.set('views', path.join(__dirname, 'public/views'));
     this.app.set('view engine', 'ejs');
-    const publicDirectoryPath = path.join(__dirname, 'public/js');
+    const publicDirectoryPath = path.join(__dirname, 'public/');
     this.app.use(express.static(publicDirectoryPath));
 
     this.initializeMiddlewares();

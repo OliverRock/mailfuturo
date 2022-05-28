@@ -1,15 +1,21 @@
-Create database with all fields
 write docs for setting up database
 Hide the database ID
-Create the message for final delivery of message
-
+Improve UI of each view
+Improve UI of emails
+Write docs to use docker
+Udpdate gmail security
 
 Complete:
 
+Create database with all fields
 Make fields reqiored 
 Make sure there is always a date when message is submitted
 Get message ID from create query
 Create email with verifiaction code
+Create the message for final delivery of message
+Find out how to get an email address not gmail
+
+
 
 
 
