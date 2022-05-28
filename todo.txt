@@ -1,11 +1,15 @@
 Create database with all fields
+write docs for setting up database
+Hide the database ID
+Create the message for final delivery of message
 
+
+Complete:
+
+Make fields reqiored 
+Make sure there is always a date when message is submitted
 Get message ID from create query
-
 Create email with verifiaction code
 
-Make sure there is always a date when message is submitted
 
-write docs for setting up database
 
-Hide the database ID

@@ -24,10 +24,11 @@ class DB {
 
   public async addNewMessage(emailAddress: string, delivery_date: Date, messageContent: string) {
     return this.pool
-      .query('INSERT INTO message (email_address, message_text, delivery_date, isValidated) VALUES ($1, $2, $3, $4) RETURNING *', [
+      .query('INSERT INTO message (email_address, message_text, delivery_date, isValidated, delivered) VALUES ($1, $2, $3, $4, $5) RETURNING *', [
         emailAddress,
         messageContent,
         delivery_date,
+        false,
         false,
       ])
       .then(res => {
@@ -40,8 +41,10 @@ class DB {
     this.pool.query('UPDATE message SET isValidated = true WHERE pk = $1', [messageId]);
   }
 
-  public async getAllMEssagesToDeliverToday(today: Date) {
-    return this.pool.query('SELECT * FROM message WHERE delivery_date = $1', [today]);
+  public async getAllMessagesToDeliverToday(today: Date) {
+    this.pool.query('SELECT * FROM message WHERE delivery_date = $1 AND isValidated = $2 AND delivered = $3', [today, true, false]).then(res => {
+      console.log(res);
+    });
   }
 }
 

@@ -14,7 +14,7 @@ class EmailRoute implements Routes {
   private initializeRoutes() {
     this.router.post(`${this.path}`, this.emailController.submit);
     this.router.get(`${this.path}/verify/:id`, this.emailController.verifyEmail);
-    this.router.post(`${this.path}/sendAllEmails`, this.emailController.verifyEmail);
+    this.router.post(`${this.path}/sendAllEmails`, this.emailController.sendAllEmails);
   }
 }
 

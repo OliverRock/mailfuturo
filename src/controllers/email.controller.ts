@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import EmailClient from '@/services/emailprovider.service';
 import DB from '@/database/db';
+import { logger } from '@/utils/logger';
 
 class EmailController {
   public submit = (req: Request, res: Response, next: NextFunction): void => {
@@ -27,8 +28,10 @@ class EmailController {
   };
 
   public sendAllEmails = (req: Request, res: Response, next: NextFunction): void => {
+    logger.info('Received POST to sendAllEmails');
     try {
-      DB.getInstance().getAllMEssagesToDeliverToday(new Date());
+      DB.getInstance().getAllMessagesToDeliverToday(new Date());
+      res.send('We are sending all emails');
     } catch (error) {
       next(error);
     }

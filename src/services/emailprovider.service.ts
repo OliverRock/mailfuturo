@@ -35,7 +35,14 @@ class EmailClient {
     };
     this.sendEmail(mailOptions, 'Verification');
   }
-
+  public deliveryFinalMessage(address: string, messageId: string) {
+    return address + messageId;
+  }
+  /**
+   * Method is used to send an email
+   * @param mailOptions should be a dict with fields: from, to, subj, and msg
+   * @param emailType
+   */
   private async sendEmail(mailOptions, emailType: 'Verification') {
     this.transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
