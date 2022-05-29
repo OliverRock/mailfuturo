@@ -35,3 +35,5 @@ I hve created a database and have been trying to connect my app to it for a whil
 and reading documentation, I have decided to use a less complex and less powerful tool, the basic postgres node packeage. Alto this is not following the path of excellance it will
 be much fasetr to deploy and debug. note to self, always remember to double check which user is connecting to a database and which database you are using. I wasted a lot of time
 connecting to different databases :(
+
+How to choose a design for the website color picker: https://coolors.co/image-picker
