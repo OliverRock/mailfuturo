@@ -36,4 +36,6 @@ and reading documentation, I have decided to use a less complex and less powerfu
 be much fasetr to deploy and debug. note to self, always remember to double check which user is connecting to a database and which database you are using. I wasted a lot of time
 connecting to different databases :(
 
+
+Designing the user interface:
 How to choose a design for the website color picker: https://coolors.co/image-picker

@@ -15,14 +15,28 @@
     <link rel="stylesheet" href="css/emailfuturo.css"/>
   </head>
   <body>
-    <div class="container">
-      <nav class="navbar fixed-top navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">MailFuturo</a>
+      <nav class="navbar navbar-light navbar-expand-md bg-faded justify-content-center">
+        <div class="container">
+            <a href="/" class="navbar-brand d-flex w-50 me-auto">MailFuturo</a>
+            <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+                <ul class="nav navbar-nav ms-auto w-100 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">How this was made</a>
+                    </li>
+                    <li class="nav-item">
+                      <p class="nav-link">|</a>
+                  </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Donate</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </nav>
-      <h1>MailFuturo</h1>
-      <p>Send yourself an email in the future</p>
+    </nav>
+    <div class="container">
+      
+
+      <p>Send an email to yourself in the future</p>
 
       <form action="/email" method="post">
         <div class="container shadow py-2">
