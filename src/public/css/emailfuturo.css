@@ -1,6 +1,25 @@
 body{
     font-family: Source Code Pro,monospace;
+    background-color: #CAE7DF;
+
+}
+nav {
+    background-color: white;
+    color: white;
 }
 form{
-    background-color: aliceblue;
+    background-color: #F4ABAA;
+
+}
+
+#main-container{
+    padding-top: 2em;
+}
+
+#row-with-text {
+    padding-top: 5em;
+}
+
+button {
+    margin-top: 0.5em;
 }
