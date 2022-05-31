@@ -23,3 +23,15 @@ form{
 button {
     margin-top: 0.5em;
 }
+
+/* Blog */
+.blog-post-meta {
+    color: gray;
+}
+
+.post {
+    border: black solid;
+    border-width: thin;
+    padding-top: 1.5em;
+    margin-top: 2.5em;
+}

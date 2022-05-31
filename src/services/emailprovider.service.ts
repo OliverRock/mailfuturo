@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { EMAIL_ADDRESS, EMAIL_PASSWORD } from '@config';
+import { EMAIL_ADDRESS, EMAIL_PASSWORD, URL } from '@config';
 import { logger } from '@/utils/logger';
 
 class EmailClient {
@@ -31,12 +31,14 @@ class EmailClient {
       html:
         '<h1>MailFuturo - Verify your email</h1>' +
         '<p>Hello,</p>' +
-        '<p>Thank you for using MailFuturo, to sen an email to yourself in the future. ' +
-        'You will receive your email on ' +
+        '<p>Thank you for using MailFuturo, to send an email in the future.</p>' +
+        '<p>You will receive your email on ' +
         deliveryDate.toDateString() +
-        ' but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify/' +
+        ' but first you need to confirm your email address, please click <a href="' +
+        URL +
+        '/email/verify/' +
         messageId +
-        '">here</a> to confirm you email address</p>',
+        '">here</a> to confirm you email address.</p>',
     };
     this.sendEmail(mailOptions, 'Verification');
   }
