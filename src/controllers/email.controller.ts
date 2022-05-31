@@ -5,11 +5,12 @@ import { logger } from '@/utils/logger';
 
 class EmailController {
   public submit = (req: Request, res: Response, next: NextFunction): void => {
-    res.render('submit');
+    const deliveryDate = new Date(req.body.deliveryDate);
+    res.render('submit', { date: deliveryDate.toDateString() });
     DB.getInstance()
-      .addNewMessage(req.body.email, new Date(req.body.deliveryDate), req.body.messageContents)
+      .addNewMessage(req.body.email, deliveryDate, req.body.messageContents)
       .then(messageId => {
-        EmailClient.getInstance().sendVerificationEmail(req.body.email, messageId.rows[0].pk);
+        EmailClient.getInstance().sendVerificationEmail(req.body.email, messageId.rows[0].pk, deliveryDate);
       })
       .catch(error => {
         next(error);

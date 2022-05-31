@@ -23,15 +23,20 @@ class EmailClient {
     return EmailClient.instance;
   }
 
-  public sendVerificationEmail(address: string, messageId: string) {
+  public sendVerificationEmail(address: string, messageId: string, deliveryDate: Date) {
     const mailOptions = {
       from: EMAIL_ADDRESS,
       to: address,
       subject: 'Verify your email',
       html:
-        '<h1>Verify your email</h1><p>Hello,\nThank you for using mailFuturo. You will receive your email on ... but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify/' +
+        '<h1>MailFuturo - Verify your email</h1>' +
+        '<p>Hello,</p>' +
+        '<p>Thank you for using MailFuturo, to sen an email to yourself in the future. ' +
+        'You will receive your email on ' +
+        deliveryDate.toDateString() +
+        ' but first you need to confirm your email address, please click <a href="http://localhost:3000/email/verify/' +
         messageId +
-        '">here to confirm you email address</a></p>',
+        '">here</a> to confirm you email address</p>',
     };
     this.sendEmail(mailOptions, 'Verification');
   }
