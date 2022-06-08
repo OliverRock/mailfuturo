@@ -1,7 +1,53 @@
 <%- include('partials/header.ejs') %>
     <div class="container" id="main-container">
-        <h1>Blog</h1>
-        <p>Under construciton</p>
+        <h1>Blog - Why and how I made this website</h1>
+
+        <div class="post">
+            <div class="container post-container">
+                <h2>Making design descions</h2>
+                <p class="blog-post-meta">7th May 2022</p>
+                <h3>Cheating</h3>
+                <p>I have descided to cheat on this project.</p>
+            </div>
+        </div>   
+
+
+        <div class="post">
+            <div class="container post-container">
+                <h2>Why I am making this website</h2>
+                <p class="blog-post-meta">6th May 2022</p>
+                <h3>The idea</h3>
+                <p>
+                    The purpose of this website is too learn a few different tools, practice some that I am familar with 
+                    and demonstrate that I can take a website from start to completion.
+                </p>
+                <p>
+                    Along with this vague aim, I have a simple idea. It comes from a task someone told me that they do with 
+                    their therepist: to write letters to themself in the future and to themself in the past. 
+                    Sending letter to the past is hard, and really beyond the scope of such a small project, 
+                    but sending an email to the future is quite easy. And so I decided to make a website which 
+                    allows the user to do that. Ideally, this website should deliver emails 50 or even 100 years in the future.
+                </p>
+                <p> My goal is to build a website which I can host myself on a linode virtual machine and I have a few 
+                    other sidequests alongside this main aim. To learn typescript, to use docker, use a database, use a 
+                    typescript test suit and to practices some design patterns for building a website. The goal will be 
+                    to over-engineer this site, that will give me the ability to quickly test out a few technologies.
+                </p>
+                <h3>Planning the functionality</h3>
+                <p>
+                    Sending an email to the future is a pretty simple idea and in theory should be relativly straight forward 
+                    thing to build. Here are the main components:
+                    <ul>
+                        <li>A website where users can enter their message along with the date they want it delivered and their email address</li>
+                        <li>A database to store the emails</li>
+                        <li>An email service which verifies the email address</li>
+                        <li>An email service which sends the emails on the desired date</li>
+                    </ul>
+                    Looking at this list I have realised this should be an easy project. The next step will be to chose
+                     a frame work, database and structure to my code.
+                </p>
+            </div>
+        </div>    
     </div>
  </body>
 </html>
